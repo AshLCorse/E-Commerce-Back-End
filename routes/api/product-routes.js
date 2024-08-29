@@ -2,14 +2,20 @@ const router = require("express").Router();
 const { Product, Category, Tag, ProductTag } = require("../../models");
 
 // The `/api/products` endpoint
-router.use("/api/products"); // nested route for products
+// router.use("/api/products"); // nested route for products
 
 // get all products
 router.get("/", (req, res) => {
   // find all products
   // be sure to include its associated Category and Tag data
   Product.findAll({
-    include: [{ model: Category }, { model: Tag }],
+    include: [
+      Category,
+      {
+        model: Tag,
+        through: ProductTag,
+      },
+    ],
   })
     .then((products) => res.status(200).json(products))
     .catch((err) => {

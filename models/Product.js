@@ -39,7 +39,7 @@ Product.init(
       allowNull: false,
       references: {
         model: "category",
-        key: "id",
+        key: "category_id",
       },
       onDelete: "CASCADE",
     },

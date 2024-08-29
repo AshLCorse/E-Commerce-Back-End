@@ -2,7 +2,7 @@ const router = require("express").Router();
 const { Category, Product } = require("../../models");
 
 // The `/api/categories` endpoint
-router.use("/api/catogories"); // nested route for products
+// router.use("/api/catogory"); // nested route for products
 
 router.get("/", (req, res) => {
   // find all categories
